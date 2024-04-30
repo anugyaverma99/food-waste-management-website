@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Waste Reduction Platform</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header, .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .search-bar {
+      margin-top: 20px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .donation-item {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Food Service</h1>
+      <div class="search-bar">
+        <input type="text" id="search-input" class="search-input" placeholder="Search by food type or location">
+      </div>
+    </div>
+  </header>
+  
+  <main class="main">
+    <div class="container">
+      <div id="donation-list" class="donation-list"></div>
+    </div>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Food Waste Reduction Platform. All rights reserved.</p>
+    </div>
+  </footer>
+  
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('search-input');
+  const donationList = document.getElementById('donation-list');
+
+  const donations = [
+    { id: 1, foodType: 'Fresh Vegetables', quantity: '10 kg', location: 'XYZ Restaurant' },
+    { id: 2, foodType: 'Canned Goods', quantity: '20 cans', location: 'ABC Supermarket' },
+    { id: 3, foodType: 'Bakery Items', quantity: '5 loaves of bread', location: 'Local Bakery' },
+    { id: 4, foodType: 'Frozen Meals', quantity: '15 packs', location: 'Frozen Foods Mart' },
+   
+  ];
+
+  
+  function renderDonations(donations) {
+    donationList.innerHTML = '';
+    donations.forEach(donation => {
+      const donationItem = document.createElement('div');
+      donationItem.classList.add('donation-item');
+      donationItem.innerHTML = `
+        <h3>${donation.foodType}</h3>
+        <p>Quantity: ${donation.quantity}</p>
+        <p>Location: ${donation.location}</p>
+      `;
+      donationList.appendChild(donationItem);
+    });
+  }
+
+  
+  renderDonations(donations);
+
+  
+  function filterDonations(query) {
+    const filtered = donations.filter(donation =>
+      donation.foodType.toLowerCase().includes(query.toLowerCase()) ||
+      donation.location.toLowerCase().includes(query.toLowerCase())
+    );
+    renderDonations(filtered);
+  }
+
+  searchInput.addEventListener('input', function (event) {
+    const query = event.target.value.trim();
+    filterDonations(query);
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const donationForm = document.getElementById('donation-form');
+
+  donationForm.addEventListener('submit', function (event) {
+    event.preventDefault(); 
+
+    const formData = new FormData(donationForm);
+    const donationData = Object.fromEntries(formData.entries());
+
+    
+    console.log('Donation data:', donationData);
+    
+
+    donationForm.reset();
+  });
+});
+
+</script>
+
+</body>
+</html>

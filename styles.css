@@ -1,0 +1,136 @@
+/* styles.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #222121;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .header {
+    background-color: #ff8c42;
+    padding: 20px 0;
+  }
+  
+  .logo {
+    font-size: 2.5rem;
+    color: #fff;
+    margin: 0;
+  }
+  
+  .search-bar {
+    margin-top: 20px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .main {
+    padding: 40px 0;
+  }
+  
+  .donation-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .donation-item {
+    background-color: #a1d0e5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .donation-item h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
+  
+  .donation-item p {
+    margin: 10px 0;
+  }
+  
+  .footer {
+    background-color: #333;
+    color: #e7afaf;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .footer p {
+    margin: 0;
+  }
+  /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f6f6;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  button[type="submit"] {
+    background-color: #ff8c42;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #ff6f00;
+  }
+  
+  .btn {
+    display: block;
+    margin: 0 auto;
+  }
+  

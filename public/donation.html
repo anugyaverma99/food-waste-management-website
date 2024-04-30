@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Donation Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333333;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    button[type="submit"] {
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h2>Food Donation Form</h2>
+  <form id="donationForm">
+    <label for="foodType">Food Type:</label>
+    <input type="text" id="foodType" name="foodType" required><br><br>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" required><br><br>
+
+    <label for="expirationDate">Expiration Date:</label>
+    <input type="date" id="expirationDate" name="expirationDate"><br><br>
+
+    <label for="pickupLocation">Pickup Location:</label>
+    <input type="text" id="pickupLocation" name="pickupLocation" required><br><br>
+
+    <button type="submit">Submit Donation</button>
+  </form>
+
+  <script>
+    document.getElementById('donationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const formData = new FormData(this);
+      const donationData = {};
+      for (const [key, value] of formData.entries()) {
+        donationData[key] = value;
+      }
+
+      fetch('/food-listings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(donationData)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error submitting donation');
+        }
+        alert('Donation submitted successfully');
+        window.location.href = '/'; // Redirect to homepage or another page
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to submit donation');
+      });
+    });
+  </script>
+</body>
+</html>
